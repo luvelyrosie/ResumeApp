@@ -1,0 +1,15 @@
+{% include "layout.html" %}
+
+<div class="container mt-5">
+  <h2>{{ resume.title }}</h2>
+  <p>{{ resume.content }}</p>
+
+  <form method="post" action="/resumes/{{ resume.id }}/improve">
+    <button type="submit" class="btn btn-warning">Improve</button>
+  </form>
+
+  {% if improved %}
+    <h3 class="mt-4">Improved Resume:</h3>
+    <p>{{  improved }}</p>
+  {% endif %}
+</div>

@@ -1,0 +1,34 @@
+from sqlalchemy import create_engine
+from sqlalchemy.orm import declarative_base
+from sqlalchemy.orm import sessionmaker
+import os
+import socket
+
+
+def is_docker() -> bool:
+    try:
+        socket.gethostbyname("db")
+        return True
+    except socket.gaierror:
+        return False
+
+# if is_docker():
+#     DATABASE_URL = "postgresql://postgres:luvelyrosie7@db:5432/ResumeAppDatabase"
+# else:
+#     DATABASE_URL = "postgresql://postgres:luvelyrosie7@localhost:5432/ResumeAppDatabase"
+
+if is_docker():
+    DATABASE_URL = "postgresql://postgres:postgres123@db:5432/ResumeAppDatabase"
+else:
+    DATABASE_URL = "postgresql://postgres:postgres123@localhost:5432/ResumeAppDatabase"
+
+# print(f"Using database URL: {DATABASE_URL}")
+
+
+engine=create_engine(DATABASE_URL)
+
+
+SessionLocal=sessionmaker(autocommit=False, autoflush=False, bind=engine)
+
+
+Base=declarative_base()
