@@ -28,7 +28,7 @@ ResumeApp is a FastAPI-based application for managing resumes. It includes user 
 1. Clone the repository:
 
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/luvelyrosie/ResumeApp.git
 cd ResumeApp
 ```
 
@@ -177,7 +177,7 @@ ResumeApp — это приложение на FastAPI для управлени
 1. Клонируйте репозиторий:
 
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/luvelyrosie/ResumeApp.git
 cd ResumeApp
 ```
 
