@@ -12,17 +12,12 @@ def is_docker() -> bool:
     except socket.gaierror:
         return False
 
-# if is_docker():
-#     DATABASE_URL = "postgresql://postgres:luvelyrosie7@db:5432/ResumeAppDatabase"
-# else:
-#     DATABASE_URL = "postgresql://postgres:luvelyrosie7@localhost:5432/ResumeAppDatabase"
 
-if is_docker():
-    DATABASE_URL = "postgresql://postgres:postgres123@db:5432/ResumeAppDatabase"
-else:
-    DATABASE_URL = "postgresql://postgres:postgres123@localhost:5432/ResumeAppDatabase"
-
-# print(f"Using database URL: {DATABASE_URL}")
+DATABASE_URL = os.environ.get("DATABASE_URL") or (
+    "postgresql://postgres:postgres123@db:5432/ResumeAppDatabase"
+    if is_docker()
+    else "postgresql://postgres:postgres123@localhost:5432/ResumeAppDatabase"
+)
 
 
 engine=create_engine(DATABASE_URL)
