@@ -5,19 +5,24 @@ import os
 import socket
 
 
-def is_docker() -> bool:
-    try:
-        socket.gethostbyname("db")
-        return True
-    except socket.gaierror:
-        return False
-
-
-DATABASE_URL = os.environ.get("DATABASE_URL") or (
-    "postgresql://postgres:postgres123@db:5432/ResumeAppDatabase"
-    if is_docker()
-    else "postgresql://postgres:postgres123@localhost:5432/ResumeAppDatabase"
+DATABASE_URL = os.environ.get(
+    "DATABASE_URL",
+    "postgresql://postgres:postgres123@db:5432/ResumeAppDatabase"  
 )
+
+# def is_docker() -> bool:
+#     try:
+#         socket.gethostbyname("db")
+#         return True
+#     except socket.gaierror:
+#         return False
+
+
+# DATABASE_URL = os.environ.get("DATABASE_URL") or (
+#     "postgresql://postgres:postgres123@db:5432/ResumeAppDatabase"
+#     if is_docker()
+#     else "postgresql://postgres:postgres123@localhost:5432/ResumeAppDatabase"
+# )
 
 
 # print(f"Using database URL: {DATABASE_URL}")
