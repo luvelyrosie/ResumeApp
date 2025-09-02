@@ -5,10 +5,7 @@ import os
 import socket
 
 
-DATABASE_URL = os.environ.get(
-    "DATABASE_URL",
-    "postgresql://postgres:postgres123@db:5432/ResumeAppDatabase"  
-)
+DATABASE_URL = os.environ["DATABASE_URL"]
 
 # def is_docker() -> bool:
 #     try:
